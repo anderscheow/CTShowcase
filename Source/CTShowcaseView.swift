@@ -216,7 +216,12 @@ open class CTShowcaseView: UIView {
         alpha = 0
         UIView.animate(withDuration: CTGlobalConstants.DefaultAnimationDuration, animations: { () -> () in
             self.alpha = 1
-        }) 
+        })
+        
+        // Provide haptic feedback
+        if #available(iOS 10.0, *) {
+            UISelectionFeedbackGenerator().selectionChanged()
+        }
         
         // Mark the showcase as "displayed" if needed
         if let storageKey = key {
